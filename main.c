@@ -13,18 +13,7 @@ duplicate songs.
 int main(){
   struct song_node *pointer = NULL;
   print_list(pointer);
-  pointer = insert_front(pointer, "ventura highway", "america");
-  pointer = insert_front(pointer, "angie", "the rolling stones");
-  pointer = insert_front(pointer, "hallelujah", "alpha beta");
-  print_list(pointer);
-  pointer = listRemove(pointer, "angie", "the rolling stones");
-  print_list(pointer);
-  pointer = listRemove(pointer, "hallelujah", "alpha beta");
-  print_list(pointer);
-  pointer = insert_front(pointer, "you can do magic", "america");
-  pointer = insert_front(pointer, "southern man", "neil young");
-  print_list(pointer);
-  pointer = free_list(pointer);
-  print_list(pointer);
+  pointer = addOrdered(pointer, "pets", "porno for pyros");
+  pointer = addOrdered(pointer, "angie", "rolling stones");
   return 0;
 }

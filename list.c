@@ -13,10 +13,10 @@ struct song_node * insert_front(struct song_node *pointer, char *name, char *art
 //print -- assumption is last element will point to NULL
 void print_list(struct song_node *pointer){
   if (pointer == NULL){
-    printf("empty library\n");
+    printf("empty library");
   }
   while(pointer != NULL){
-    printf("[%s, by %s] ", pointer->name, pointer->artist);
+    printf("|%s: %s| ", pointer->name, pointer->artist);
     pointer = pointer->next;
   }
   printf("\n");
@@ -70,16 +70,25 @@ struct song_node * listRemove(struct song_node *front, char *name, char *artist)
 }
 //add addOrdered
 struct song_node * addOrdered(struct song_node *front, char *name, char *artist){
-  //hold two pointer variables and 2 integer variables
-  //compare to current and current.next (current will become previous). Once previous is (-) but current is (+)
-  //insert it there
-  //to insert, insert_front(current, name, artist) and set previous.next == to this
-  struct song_node *this = malloc(sizeof(struct song_node));
-  this->name = name;
-  this->artist = artist;
-  this->next = NULL;
+  if (front == NULL){
+    front = insert_front(front, name, artist);
+    return front;
+  }
   struct song_node *current = front;
   struct song_node *previous = NULL;
-  
-  return front;
+  while (strcmp(current->artist, artist)<0){
+    previous = current;
+    current = current->next;
+  } // YOU HAVE TO GO BACKWARDS FOR SECOND STEP BECAUSE ABOVE LOOP
+  //STOPS RIGHT WHEN YOU HIT THE ARTSIT YOU WON'T ADD TO. SO GO BACKWARDS!@
+  //once this ends, means you are at the right artist area
+  while (strcmp(current->name, name) < 0){
+    previous = current;
+    current = current->next;
+  } //once this stops, you got it!
+  if (previous!=NULL){//if you're not adding to the front, link them
+    previous->next = insert_front(current, name, artist);
+    return front;
+  }
+  return insert_front(current, name, artist);
 }
