@@ -71,7 +71,7 @@ struct song_node * listRemove(struct song_node *front, char *name, char *artist)
 struct song_node * find(struct song_node *front, char *name, char* artist){
   //if it's not in the song, return null pointer
   struct song_node *current = front;
-  while(current!=NULL && strcmp(current->artist, artist) != 0 && strcmp(current->name, name) != 0){
+  while(current!=NULL && (strcmp(current->artist, artist) != 0 || strcmp(current->name, name) != 0)){
     current = current->next;
   }
   return current;
