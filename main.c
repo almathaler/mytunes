@@ -81,5 +81,13 @@ int main(){
   printf("finding stone temple pilots\n");
   pointer = findArtist(front, "stone temple pilots");
   print_list(pointer);
+
+  printf("\n--finding random--\n");
+  int i;
+  for (i=0; i<3; i++){
+    printf("random #%d\n", i);
+    print_list(randomSong(front, i));
+  }
+
   return 0;
 }

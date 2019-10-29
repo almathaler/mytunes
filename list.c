@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include "list.h"
 //insert front
 struct song_node * insert_front(struct song_node *pointer, char *name, char *artist){
@@ -85,7 +86,29 @@ struct song_node * findArtist(struct song_node *front, char *artist){
   }
   return current;
 }
-
+//
+int size(struct song_node *front){
+  int toReturn = -1;
+  while(front!=NULL){
+    toReturn++;
+    front = front->next;
+  }
+  //printf("INSIZE, returning: %d\n", toReturn);
+  return toReturn;
+}
+//
+struct song_node * randomSong(struct song_node *front, int i){
+  srand(time(NULL)+i);
+  int times = rand()%size(front);
+  //printf("IN RANDSONG: times = %d\n", times);
+  while(times>=0){
+    front=front->next;
+    times--;
+  }
+  //printf("IN RANDSONG: at song %s\n", front->name);
+  return front; //changes where 'front' points to but doesn't affect anything outside this method
+}
+//
 struct song_node * addOrdered(struct song_node *front, char *name, char *artist){
   if (front == NULL){
     front = insert_front(front, name, artist);
