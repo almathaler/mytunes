@@ -1,7 +1,7 @@
 /*
 You should start by making your linked lists work with the following functionality:
 insert nodes at the front (*)
-insert nodes in order (alphabetical by Artist then by Song)
+insert nodes in order (alphabetical by Artist then by Song) (*)
 print the entire list (*)
 find and return a pointer to a node based on artist and song name
 find and return a pointer to the first song of an artist based on artist name
@@ -29,4 +29,5 @@ struct song_node * listRemove(struct song_node *front, char *name, char *artist)
 struct song_node * addOrdered(struct song_node *front, char *name, char *artist);
 //will return pointer to front, uses strcmp to place this node. NOTE: please use only lowercase
 
+struct song_node * find(struct song_node *front, char *name, char* artist);
 #endif
