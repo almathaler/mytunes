@@ -68,3 +68,18 @@ struct song_node * listRemove(struct song_node *front, char *name, char *artist)
   }
   return front;
 }
+//add addOrdered
+struct song_node * addOrdered(struct song_node *front, char *name, char *artist){
+  //hold two pointer variables and 2 integer variables
+  //compare to current and current.next (current will become previous). Once previous is (-) but current is (+)
+  //insert it there
+  //to insert, insert_front(current, name, artist) and set previous.next == to this
+  struct song_node *this = malloc(sizeof(struct song_node));
+  this->name = name;
+  this->artist = artist;
+  this->next = NULL;
+  struct song_node *current = front;
+  struct song_node *previous = NULL;
+  
+  return front;
+}
