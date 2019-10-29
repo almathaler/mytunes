@@ -14,6 +14,13 @@ int main(){
   struct song_node *pointer = NULL;
   print_list(pointer);
   pointer = addOrdered(pointer, "pets", "porno for pyros");
+  print_list(pointer);
+  //printf("first\n");
   pointer = addOrdered(pointer, "angie", "rolling stones");
+  //printf("second\n");
+  pointer = addOrdered(pointer, "ventura highway", "america");
+  //printf("third\n");
+  //should print as [ventura highway, america], [pets, porno for pyros], [angie, rolling stones]
+  print_list(pointer);
   return 0;
 }

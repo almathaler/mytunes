@@ -16,7 +16,7 @@ void print_list(struct song_node *pointer){
     printf("empty library");
   }
   while(pointer != NULL){
-    printf("|%s: %s| ", pointer->name, pointer->artist);
+    printf("|%s: %s| ", pointer->artist, pointer->name);
     pointer = pointer->next;
   }
   printf("\n");
@@ -72,6 +72,8 @@ struct song_node * listRemove(struct song_node *front, char *name, char *artist)
 struct song_node * addOrdered(struct song_node *front, char *name, char *artist){
   if (front == NULL){
     front = insert_front(front, name, artist);
+    printf("NULLadded %s by %s to front\n", name, artist);
+    printf("value of front: %p\n", front);
     return front;
   }
   struct song_node *current = front;
@@ -79,16 +81,24 @@ struct song_node * addOrdered(struct song_node *front, char *name, char *artist)
   while (strcmp(current->artist, artist)<0){
     previous = current;
     current = current->next;
-  } // YOU HAVE TO GO BACKWARDS FOR SECOND STEP BECAUSE ABOVE LOOP
-  //STOPS RIGHT WHEN YOU HIT THE ARTSIT YOU WON'T ADD TO. SO GO BACKWARDS!@
+  }
   //once this ends, means you are at the right artist area
-  while (strcmp(current->name, name) < 0){
+  //if you already have a song from that artist, it'll stop at the front of that (bc there, strcmp will yield 0)
+  //if you don't, it'll stop right where it should be added
+  //so if there isn't already one of that type of artist, just add. however if there is, you should go through that
+  //and decide where to place it
+  while (strcmp(current->name, name) < 0 && strcmp(current->artist, artist) == 0){
+    //what this loop does is if you are where you should be and no other of that type of artist, skips this and j adds
+    //however if you stopped right where there are other of your type, compare the names until your reach where to adds/
+    //also, if you should add to the front, then this will allow you to
     previous = current;
     current = current->next;
   } //once this stops, you got it!
   if (previous!=NULL){//if you're not adding to the front, link them
     previous->next = insert_front(current, name, artist);
+    printf("added %s by %s\n", name, artist);
     return front;
-  }
+  } //if you are adding to the front, set front = to adding to the front
+  printf("added %s by %s to front\n", name, artist);
   return insert_front(current, name, artist);
 }
