@@ -72,13 +72,11 @@ struct song_node * listRemove(struct song_node *front, char *name, char *artist)
 struct song_node * addOrdered(struct song_node *front, char *name, char *artist){
   if (front == NULL){
     front = insert_front(front, name, artist);
-    printf("NULLadded %s by %s to front\n", name, artist);
-    printf("value of front: %p\n", front);
     return front;
   }
   struct song_node *current = front;
   struct song_node *previous = NULL;
-  while (strcmp(current->artist, artist)<0){
+  while (current != NULL && strcmp(current->artist, artist)<0){ //once current is at null, means that you shoul just add to end, so set previous->next = this
     previous = current;
     current = current->next;
   }
@@ -87,7 +85,7 @@ struct song_node * addOrdered(struct song_node *front, char *name, char *artist)
   //if you don't, it'll stop right where it should be added
   //so if there isn't already one of that type of artist, just add. however if there is, you should go through that
   //and decide where to place it
-  while (strcmp(current->name, name) < 0 && strcmp(current->artist, artist) == 0){
+  while (current != NULL && strcmp(current->name, name) < 0 && strcmp(current->artist, artist) == 0){
     //what this loop does is if you are where you should be and no other of that type of artist, skips this and j adds
     //however if you stopped right where there are other of your type, compare the names until your reach where to adds/
     //also, if you should add to the front, then this will allow you to
@@ -95,10 +93,9 @@ struct song_node * addOrdered(struct song_node *front, char *name, char *artist)
     current = current->next;
   } //once this stops, you got it!
   if (previous!=NULL){//if you're not adding to the front, link them
+    //this still works if you're adding to the back (current=NULL and previous is a node), because you can create a list out of null
     previous->next = insert_front(current, name, artist);
-    printf("added %s by %s\n", name, artist);
     return front;
   } //if you are adding to the front, set front = to adding to the front
-  printf("added %s by %s to front\n", name, artist);
   return insert_front(current, name, artist);
 }

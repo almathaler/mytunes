@@ -12,15 +12,24 @@ duplicate songs.
 
 int main(){
   struct song_node *pointer = NULL;
+  printf("testing print list on an empty list:\n");
   print_list(pointer);
-  pointer = addOrdered(pointer, "pets", "porno for pyros");
-  print_list(pointer);
-  //printf("first\n");
-  pointer = addOrdered(pointer, "angie", "rolling stones");
-  //printf("second\n");
+  printf("now going to add 10 songs, will print list each time:\n");
   pointer = addOrdered(pointer, "ventura highway", "america");
-  //printf("third\n");
-  //should print as [ventura highway, america], [pets, porno for pyros], [angie, rolling stones]
+  print_list(pointer);
+  pointer = addOrdered(pointer, "horse with no name", "america");
+  print_list(pointer);
+  pointer = addOrdered(pointer, "one of these nights", "eagles");
+  print_list(pointer);
+  pointer = addOrdered(pointer, "big empty", "stone temple pilots");
+  print_list(pointer);
+  pointer= addOrdered(pointer, "little wing", "jimi hendrix");
+  print_list(pointer);
+  pointer = addOrdered(pointer, "southern man", "neil young");
+  print_list(pointer);
+  pointer = addOrdered(pointer, "drive", "incubus");
+  print_list(pointer);
+  pointer = addOrdered(pointer, "how long", "ace");
   print_list(pointer);
   return 0;
 }
