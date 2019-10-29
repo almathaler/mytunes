@@ -71,5 +71,15 @@ int main(){
   printf("finding how long, printing from there:\n");
   pointer = find(front, "how long", "ace");
   print_list(pointer);
+
+  printf("\n--testing find (first of artist)--\n");
+  printf("finding america\n");
+  pointer = findArtist(front, "america");
+  print_list(pointer);
+  printf("adding another song by stp to test this again\n");
+  front = addOrdered(front, "plush", "stone temple pilots");
+  printf("finding stone temple pilots\n");
+  pointer = findArtist(front, "stone temple pilots");
+  print_list(pointer);
   return 0;
 }
