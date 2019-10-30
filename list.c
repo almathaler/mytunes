@@ -5,7 +5,11 @@
 #include "list.h"
 //
 void printNode(struct song_node *pointer){
-  printf("|%s : %s|", pointer->artist, pointer->name);
+  if (pointer == NULL){
+    printf("|   |");
+  }else{
+    printf("| %s: %s |", pointer->artist, pointer->name);
+  }
 }
 //insert front
 struct song_node * insert_front(struct song_node *pointer, char *name, char *artist){
@@ -21,7 +25,7 @@ void print_list(struct song_node *pointer){
     printf("|   |");
   }
   while(pointer != NULL){
-    printf("|%s: %s| ", pointer->artist, pointer->name);
+    printf("| %s: %s | ", pointer->artist, pointer->name);
     pointer = pointer->next;
   }
   printf("\n");
@@ -82,7 +86,7 @@ struct song_node * find(struct song_node *front, char *name, char* artist){
   }
   return current;
 }
-//
+//BOTH FINDS RETURN NULL POINTER IF NOT THERE
 struct song_node * findArtist(struct song_node *front, char *artist){
   struct song_node *current = front;
   while(current!=NULL && strcmp(current->artist, artist) != 0){

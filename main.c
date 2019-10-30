@@ -13,25 +13,26 @@ duplicate songs.
 #include "library.h"
 
 int main(){
+  srand(time(NULL));
   struct song_node *front = NULL;
   printf("\n--testing print list on an empty list:--\n");
   print_list(front);
 
   printf("\n--now going to add 8 songs, will print list each time:--\n");
   front = addOrdered(front, "ventura highway", "america");
-  print_list(front);
+  //print_list(front);
   front = addOrdered(front, "horse with no name", "america");
-  print_list(front);
+  //print_list(front);
   front = addOrdered(front, "one of these nights", "eagles");
-  print_list(front);
+  //print_list(front);
   front = addOrdered(front, "big empty", "stone temple pilots");
-  print_list(front);
+  //print_list(front);
   front= addOrdered(front, "little wing", "jimi hendrix");
-  print_list(front);
+  //print_list(front);
   front = addOrdered(front, "southern man", "neil young");
-  print_list(front);
+  //print_list(front);
   front = addOrdered(front, "drive", "incubus");
-  print_list(front);
+  //print_list(front);
   front = addOrdered(front, "how long", "ace");
   print_list(front);
 
@@ -85,7 +86,6 @@ int main(){
   print_list(pointer);
 
   printf("\n--finding random--\n");
-  srand(time(NULL));
   int i;
   for (i=0; i<3; i++){
     printf("random #%d\n", i);
@@ -97,7 +97,7 @@ int main(){
     table[i] = NULL;
   }
   printf("\n\n------TESTING LIBRARY------\n\n");
-  printf("adding these songs: ventura highway, america and layla, derek and the dominos and cocaine, eric clapton and interstate love song, stone temple pilots and again plush, stone temple pilots\n\n");
+  printf("adding songs\n");
   /*
   for (i=97; i<123; i++){
     char *pointer = &(i);
@@ -112,22 +112,55 @@ int main(){
   addLib(table, "ventura highway", "america");
   addLib(table, "horse with no name", "america");
   addLib(table, "dream on", "aerosmith");
+  addLib(table, "layla", "derek and the dominos");
+  addLib(table, "cocaine", "eric clapton");
   addLib(table, "interstate love song", "stone temple pilots");
   addLib(table, "plush", "stone temple pilots");
   addLib(table, "big empty", "stone temple pilots");
   addLib(table, "one of these nights", "eagles");
+  addLib(table, "hotel california", "eagles");
+  addLib(table, "if you think im sexy", "rod stewart");
+  addLib(table, "angie", "rolling stones");
+  addLib(table, "wild horses", "rolling stones");
+  addLib(table, "if you really want to be my friend", "rolling stones");
   addLib(table, "walk on the wild side", "lou reede");
   addLib(table, "just because", "janes addiction");
   addLib(table, "black", "pearl jam");
   printLib(table);
+
+  printf("\n--TESTING PRINT ARTIST AND FIND ARTIST (print artist uses find)--\n");
   printf("\nNow going to print out all the stone temple pilots:\n");
   printArtist(table, "stone temple pilots");
-  printf("\nAnd all the america songs:\n");
+  printf("And all the america songs:\n");
   printArtist(table, "america");
+
+  printf("\n--TESTING PRINTLETTER--\n");
   printf("and now, all the 'a' songs:\n");
   printLetter(table, 'a');
   printf("and all the 'b' songs:\n");
   printLetter(table, 'b');
+  printf("all the 'p' songs:\n");
+  printLetter(table, 'p');
 
+  printf("\n--TESTING FIND SONG (will print that node only, and then that node in list)--\n");
+  printf("finding hotel california, will print that node then it's position:\n");
+  struct song_node *p = findLib(table, "hotel california", "eagles");
+  printNode(p);
+  printf("\n");
+  print_list(p);
+  printf("finding black by pearl jam\n");
+  p = findLib(table, "black", "pearl jam");
+  printNode(p);
+  printf("\n");
+  print_list(p);
+  printf("find a song not in the library, little wing by jimi hendrix\n");
+  p = findLib(table, "little wing", "jimi hendrix");
+  printNode(p);
+  printf("\n");
+  print_list(p);
+  printf("\n--TESTING SHUFFLE (will print 5 songs randomly)--\n");
+  shuffle(table);
+
+  //
   return 0;
 }

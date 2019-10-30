@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "list.h"
 #include "library.h"
 
@@ -24,8 +25,16 @@ void printLetter(struct song_node **table, char letter){
 //
 void printArtist(struct song_node **table, char *artist){
   //THERE IS A PROBLEM WITH THIS -- WILL EVEN PRINT WHAT'S AFTER THIS
-  int index = makeIndex(artist[0]); //where in array we will access
-  print_list(findArtist(table[index], artist));
+  struct song_node *pointer = findArtistLib(table, artist);
+  if (pointer == NULL){
+    printf("|  |");
+  }
+  while(pointer!=NULL && strcmp(pointer->artist, artist) == 0){
+    printNode(pointer);
+    printf(" ");
+    pointer = pointer->next;
+  }
+  printf("\n");
 }
 //
 void printLib(struct song_node **table){
@@ -69,5 +78,6 @@ void shuffle(struct song_node **table){
   for (i=0; i<5; i++){
     k = rand()%26;
     printNode(randomSong(table[k]));
+    printf(" ");
   }
 }
