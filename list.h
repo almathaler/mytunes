@@ -33,5 +33,5 @@ struct song_node * find(struct song_node *front, char *name, char *artist);
 
 struct song_node * findArtist(struct song_node *front, char *artist);
 
-struct song_node * randomSong(struct song_node *front, int i);
+struct song_node * randomSong(struct song_node *front);
 #endif

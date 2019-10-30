@@ -97,8 +97,7 @@ int size(struct song_node *front){
   return toReturn;
 }
 //
-struct song_node * randomSong(struct song_node *front, int i){
-  srand(time(NULL)+i);
+struct song_node * randomSong(struct song_node *front){
   int times = rand()%size(front);
   //printf("IN RANDSONG: times = %d\n", times);
   while(times>=0){

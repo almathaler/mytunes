@@ -8,6 +8,7 @@ duplicate songs.
 */
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "list.h"
 
 int main(){
@@ -83,10 +84,11 @@ int main(){
   print_list(pointer);
 
   printf("\n--finding random--\n");
+  srand(time(NULL));
   int i;
   for (i=0; i<3; i++){
     printf("random #%d\n", i);
-    print_list(randomSong(front, i));
+    print_list(randomSong(front));
   }
 
   return 0;
