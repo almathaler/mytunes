@@ -33,3 +33,24 @@ void printLib(struct song_node **table){
     printLetter(table, i);
   }
 }
+//
+void addLib(struct song_node **table, char *name, char *artist){
+  int index = makeIndex(artist[0]);
+  addOrdered(table[index], name, artist);
+}
+//
+struct song_node * findLib(struct song_node **table, char *name, char *artist){
+  int index = makeIndex(artist[0]);
+  return find(table[index], name, artist);
+}
+//
+struct song_node * findArtistLib(struct song_node **table, char *name, char *artist){
+  int index = makeIndex(artist[0]);
+  return findArtist(table[index], artist);
+
+}
+//
+void deleteSong(struct song_node **table, char*name, char*artist){
+  int index = makeIndex(artist[0]);
+  listRemove(table[index], name, artist);
+}
