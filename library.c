@@ -44,7 +44,7 @@ struct song_node * findLib(struct song_node **table, char *name, char *artist){
   return find(table[index], name, artist);
 }
 //
-struct song_node * findArtistLib(struct song_node **table, char *name, char *artist){
+struct song_node * findArtistLib(struct song_node **table, char *artist){
   int index = makeIndex(artist[0]);
   return findArtist(table[index], artist);
 
@@ -53,4 +53,23 @@ struct song_node * findArtistLib(struct song_node **table, char *name, char *art
 void deleteSong(struct song_node **table, char*name, char*artist){
   int index = makeIndex(artist[0]);
   listRemove(table[index], name, artist);
+}
+//
+void clearLib(struct song_node **table){
+  int i;
+  for (i=0; i<27; i++){
+    free_list(table[i]);
+  }
+  free(table);
+  return table;
+}
+//
+void shuffle(struct song_node **table){
+  //loop 5 times
+  int i;
+  int k;
+  for (i=0; i<5; i++){
+    k = rand()%26;
+    printNode(randomSong(table[index]));
+  }
 }

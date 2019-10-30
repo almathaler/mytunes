@@ -34,4 +34,6 @@ struct song_node * find(struct song_node *front, char *name, char *artist);
 struct song_node * findArtist(struct song_node *front, char *artist);
 
 struct song_node * randomSong(struct song_node *front);
+
+void printNode(struct song_node *pointer);
 #endif

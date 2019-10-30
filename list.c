@@ -3,6 +3,10 @@
 #include <string.h>
 #include <time.h>
 #include "list.h"
+//
+void printNode(struct song_node *pointer){
+  printf("|%s : %s|", pointer->artist, pointer->name);
+}
 //insert front
 struct song_node * insert_front(struct song_node *pointer, char *name, char *artist){
   struct song_node *front = malloc(sizeof(struct song_node));
