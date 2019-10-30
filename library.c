@@ -23,6 +23,7 @@ void printLetter(struct song_node **table, char letter){
 }
 //
 void printArtist(struct song_node **table, char *artist){
+  //THERE IS A PROBLEM WITH THIS -- WILL EVEN PRINT WHAT'S AFTER THIS
   int index = makeIndex(artist[0]); //where in array we will access
   print_list(findArtist(table[index], artist));
 }
