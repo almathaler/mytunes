@@ -97,7 +97,7 @@ int main(){
     table[i] = NULL;
   }
   printf("\n\n------TESTING LIBRARY------\n\n");
-  printf("adding these songs: ventura highway, america and layla, derek and the dominos and cocaine, eric clapton and interstate love song, stone temple pilots and again plush, stone temple pilots\n");
+  printf("adding these songs: ventura highway, america and layla, derek and the dominos and cocaine, eric clapton and interstate love song, stone temple pilots and again plush, stone temple pilots\n\n");
   addLib(table, "ventura highway", "america");
   addLib(table, "layla", "derek and the dominos");
   addLib(table, "cocaine", "eric clapton");

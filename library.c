@@ -36,7 +36,8 @@ void printLib(struct song_node **table){
 //
 void addLib(struct song_node **table, char *name, char *artist){
   int index = makeIndex(artist[0]);
-  addOrdered(table[index], name, artist);
+  printf("INDEX for %s: %d\n", name, index);
+  table[index] = addOrdered(table[index], name, artist);
 }
 //
 struct song_node * findLib(struct song_node **table, char *name, char *artist){
