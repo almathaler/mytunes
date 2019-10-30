@@ -29,8 +29,8 @@ void printArtist(struct song_node **table, char *artist){
 //
 void printLib(struct song_node **table){
   int i;
-  for (i = 0; i<27; i++){
-    printLetter(table, i);
+  for (i = 0; i<27; i++){ //like letters
+    print_list(table[i]);
   }
 }
 //
@@ -47,7 +47,6 @@ struct song_node * findLib(struct song_node **table, char *name, char *artist){
 struct song_node * findArtistLib(struct song_node **table, char *artist){
   int index = makeIndex(artist[0]);
   return findArtist(table[index], artist);
-
 }
 //
 void deleteSong(struct song_node **table, char*name, char*artist){
@@ -69,6 +68,6 @@ void shuffle(struct song_node **table){
   int k;
   for (i=0; i<5; i++){
     k = rand()%26;
-    printNode(randomSong(table[index]));
+    printNode(randomSong(table[k]));
   }
 }

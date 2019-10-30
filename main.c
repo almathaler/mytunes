@@ -10,6 +10,7 @@ duplicate songs.
 #include <stdio.h>
 #include <time.h>
 #include "list.h"
+#include "library.h"
 
 int main(){
   struct song_node *front = NULL;
@@ -92,7 +93,17 @@ int main(){
   }
   //NOW array
   struct song_node * table[27];
-  //TABLE[0], ETC that's your front pointer that you pass into these functions
+  for (i=0; i<27; i++){
+    table[i] = NULL;
+  }
+  printf("\n\n------TESTING LIBRARY------\n\n");
+  printf("adding these songs: ventura highway, america and layla, derek and the dominos and cocaine, eric clapton and interstate love song, stone temple pilots and again plush, stone temple pilots\n");
+  addLib(table, "ventura highway", "america");
+  addLib(table, "layla", "derek and the dominos");
+  addLib(table, "cocaine", "eric clapton");
+  addLib(table, "interstate love song", "stone temple pilots");
+  addLib(table, "plush", "stone temple pilots");
+  printLib(table);
 
 
   return 0;
