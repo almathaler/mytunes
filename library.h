@@ -13,5 +13,15 @@ Clear the library.
 */
 #ifndef library_h
 #define library_h
-
+//this is what interacts with the array!
+//also you can access letters of a string literal w c[0] still!
+void addLib(struct song_node **table, char *name, char *artist);
+struct song_node * findLib(struct song_node **table, char *name, char *artist);
+struct song_node * findArtistLib(struct song_node **table, char *name, char *artist);
+void printLetter(struct song_node **table, char letter);
+void printArtist(struct song_node **table, char *artist);
+void printLib(struct song_node **table);
+void shuffle(struct song_node **table); //print out 5 random songs
+void deleteSong(struct song_node **table, char*name, char*artist);
+void deleteAll(struct song_node **table);
 #endif

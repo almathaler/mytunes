@@ -90,6 +90,10 @@ int main(){
     printf("random #%d\n", i);
     print_list(randomSong(front));
   }
+  //NOW array
+  struct song_node * table[27];
+  //TABLE[0], ETC that's your front pointer that you pass into these functions
+
 
   return 0;
 }
