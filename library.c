@@ -36,7 +36,7 @@ void printLib(struct song_node **table){
 //
 void addLib(struct song_node **table, char *name, char *artist){
   int index = makeIndex(artist[0]);
-  printf("INDEX for %s: %d\n", name, index);
+  //printf("INDEX for %s: %d\n", name, index);
   table[index] = addOrdered(table[index], name, artist);
 }
 //
@@ -49,10 +49,9 @@ struct song_node * findArtistLib(struct song_node **table, char *artist){
   int index = makeIndex(artist[0]);
   return findArtist(table[index], artist);
 }
-//
 void deleteSong(struct song_node **table, char*name, char*artist){
   int index = makeIndex(artist[0]);
-  listRemove(table[index], name, artist);
+  table[index] = listRemove(table[index], name, artist);
 }
 //
 void clearLib(struct song_node **table){
@@ -60,7 +59,6 @@ void clearLib(struct song_node **table){
   for (i=0; i<27; i++){
     free_list(table[i]);
   }
-  free(table);
 }
 //
 void shuffle(struct song_node **table){

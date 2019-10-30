@@ -18,7 +18,7 @@ struct song_node * insert_front(struct song_node *pointer, char *name, char *art
 //print -- assumption is last element will point to NULL
 void print_list(struct song_node *pointer){
   if (pointer == NULL){
-    printf("empty library");
+    printf("|   |");
   }
   while(pointer != NULL){
     printf("|%s: %s| ", pointer->artist, pointer->name);

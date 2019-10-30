@@ -98,13 +98,36 @@ int main(){
   }
   printf("\n\n------TESTING LIBRARY------\n\n");
   printf("adding these songs: ventura highway, america and layla, derek and the dominos and cocaine, eric clapton and interstate love song, stone temple pilots and again plush, stone temple pilots\n\n");
+  /*
+  for (i=97; i<123; i++){
+    char *pointer = &(i);
+    char *pointer2 = &(i);
+    addLib(table, pointer, pointer2);
+  }
+  addLib(table, "a", "a");
+  addLib(table, "b", "b");
+  addLib(table, "y", "y");
+  addLib(table, "z", "z");
+  */
   addLib(table, "ventura highway", "america");
-  addLib(table, "layla", "derek and the dominos");
-  addLib(table, "cocaine", "eric clapton");
+  addLib(table, "horse with no name", "america");
+  addLib(table, "dream on", "aerosmith");
   addLib(table, "interstate love song", "stone temple pilots");
   addLib(table, "plush", "stone temple pilots");
+  addLib(table, "big empty", "stone temple pilots");
+  addLib(table, "one of these nights", "eagles");
+  addLib(table, "walk on the wild side", "lou reede");
+  addLib(table, "just because", "janes addiction");
+  addLib(table, "black", "pearl jam");
   printLib(table);
-
+  printf("\nNow going to print out all the stone temple pilots:\n");
+  printArtist(table, "stone temple pilots");
+  printf("\nAnd all the america songs:\n");
+  printArtist(table, "america");
+  printf("and now, all the 'a' songs:\n");
+  printLetter(table, 'a');
+  printf("and all the 'b' songs:\n");
+  printLetter(table, 'b');
 
   return 0;
 }
