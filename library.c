@@ -7,9 +7,9 @@ int makeIndex(char letter){
   int index;
   if (letter > 90){//lower case
     index = letter-97;
-  }else(
+  }else{
     index = letter-65;
-  )
+  }
   if (index > 26){
     index = 26;
   }
@@ -61,7 +61,6 @@ void clearLib(struct song_node **table){
     free_list(table[i]);
   }
   free(table);
-  return table;
 }
 //
 void shuffle(struct song_node **table){
