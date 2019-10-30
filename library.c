@@ -77,6 +77,9 @@ void shuffle(struct song_node **table){
   int k;
   for (i=0; i<5; i++){
     k = rand()%26;
+    while (table[k] == NULL){
+      k=(k+1)%26;
+    }
     printNode(randomSong(table[k]));
     printf(" ");
   }

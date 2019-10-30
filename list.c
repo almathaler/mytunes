@@ -107,9 +107,12 @@ int size(struct song_node *front){
 //
 struct song_node * randomSong(struct song_node *front){
   int times = rand()%size(front);
-  //printf("IN RANDSONG: times = %d\n", times);
-  while(times>=0){
-    front=front->next;
+  printf("\nIN RANDSONG: times = %d\n", times);
+  while(times>=0 && front!=NULL){ //might return null if in library and looking thru empty letter
+    if(front->next == NULL){
+      return front;
+    }
+    front = front->next;
     times--;
   }
   //printf("IN RANDSONG: at song %s\n", front->name);

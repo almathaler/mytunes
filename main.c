@@ -160,6 +160,7 @@ int main(){
   print_list(p);
   printf("\n--TESTING SHUFFLE (will print 5 songs randomly)--\n");
   shuffle(table);
+  printf("\n--TESTING DELETE AND CLEAR LIB--\n");
 
   //
   return 0;
