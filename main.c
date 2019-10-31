@@ -160,8 +160,20 @@ int main(){
   print_list(p);
   printf("\n--TESTING SHUFFLE (will print 5 songs randomly)--\n");
   shuffle(table);
-  printf("\n--TESTING DELETE AND CLEAR LIB--\n");
 
+  printf("\n--TESTING DELETE AND CLEAR LIB--\n");
+  printf("going to delete aerosmith: dream on\n");
+  deleteSong(table, "aerosmith", "dream on");
+  printLib(table);
+  printf("going to delete interestate love song, but just print the 's' list\n");
+  deleteSong(table, "interstate love song", "stone temple pilots");
+  printLetter(table, 's');
+  printf("trying to delete something not there, spooky by atlanta rhythym section\n");
+  deleteSong(table, "spooky", "atlanta rhythym section");
+  printLetter(table, 'a');
+  printf("lastly, deleting rolling stones: wild horses\n");
+  deleteSong(table, "wild horses", "rolling stones");
+  printLetter(table, 'r');
   //
   return 0;
 }

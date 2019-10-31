@@ -101,13 +101,13 @@ int size(struct song_node *front){
     toReturn++;
     front = front->next;
   }
-  printf("INSIZE, returning: %d\n", toReturn);
+  //printf("INSIZE, returning: %d\n", toReturn);
   return toReturn;
 }
 //
 struct song_node * randomSong(struct song_node *front){
   int times = rand()%size(front); //modding by zero is floating point exception
-  printf("\nIN RANDSONG: times = %d\n", times);
+  //printf("\nIN RANDSONG: times = %d\n", times);
   while(times>=0 && front!=NULL){ //might return null if in library and looking thru empty letter
     if(front->next == NULL){
       return front;
