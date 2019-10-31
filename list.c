@@ -96,17 +96,17 @@ struct song_node * findArtist(struct song_node *front, char *artist){
 }
 //
 int size(struct song_node *front){
-  int toReturn = -1;
+  int toReturn = 0;
   while(front!=NULL){
     toReturn++;
     front = front->next;
   }
-  //printf("INSIZE, returning: %d\n", toReturn);
+  printf("INSIZE, returning: %d\n", toReturn);
   return toReturn;
 }
 //
 struct song_node * randomSong(struct song_node *front){
-  int times = rand()%size(front);
+  int times = rand()%size(front); //modding by zero is floating point exception
   printf("\nIN RANDSONG: times = %d\n", times);
   while(times>=0 && front!=NULL){ //might return null if in library and looking thru empty letter
     if(front->next == NULL){
