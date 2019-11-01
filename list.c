@@ -4,7 +4,7 @@
 #include <time.h>
 #include "list.h"
 //
-void printNode(struct song_node *pointer){
+void print_node(struct song_node *pointer){
   if (pointer == NULL){
     printf("|   |");
   }else{
@@ -37,15 +37,16 @@ struct song_node * free_list(struct song_node *pointer){
     }
     if (pointer->next == NULL){
       //printf("freeing base: ");
-      //printNode(pointer);
+      //print_node(pointer);
       free(pointer); //empty this space
       pointer = NULL;
     }else{
       //printf("not yet at bottom, am here: ");
-      //printNode(pointer);
+      //print_node(pointer);
       free_list(pointer->next); //go to the next node to free it
       //printf("freeing: ");
-      //printNode(pointer);
+      //print_node(pointer);
+      //NOTICE THAT ALL THESE OTHER FREES ARE NEW!!!!
       free(pointer);
       pointer = NULL;
   }
@@ -62,7 +63,7 @@ struct song_node * listRemove(struct song_node *front, char *name, char *artist)
   while(iterator != NULL){
     if(strcmp(iterator->name, name) == 0 && strcmp(iterator->artist, artist) == 0){
       //printf("found data! removing at ");
-      //printNode(iterator);
+      //print_node(iterator);
       if (behindIterator == NULL){
         front = iterator->next; //if you're removing the first piece, there's no back. so  just skip over this
       }else{
@@ -71,8 +72,8 @@ struct song_node * listRemove(struct song_node *front, char *name, char *artist)
       free(iterator);
       iterator=NULL;
       //printf("now the surrounding pointers look like: ");
-      //printNode(behindIterator);
-      //printNode(behindIterator->next);
+      //print_node(behindIterator);
+      //print_node(behindIterator->next);
     }else{
       behindIterator = iterator;
       iterator = iterator->next;
@@ -91,7 +92,7 @@ struct song_node * find(struct song_node *front, char *name, char* artist){
   return current;
 }
 //BOTH FINDS RETURN NULL POINTER IF NOT THERE
-struct song_node * findArtist(struct song_node *front, char *artist){
+struct song_node * find_artist(struct song_node *front, char *artist){
   struct song_node *current = front;
   while(current!=NULL && strcmp(current->artist, artist) != 0){
     current = current->next;
@@ -109,7 +110,7 @@ int size(struct song_node *front){
   return toReturn;
 }
 //
-struct song_node * randomSong(struct song_node *front){
+struct song_node * random_song(struct song_node *front){
   int times = rand()%size(front); //modding by zero is floating point exception
   //printf("\nIN RANDSONG: times = %d\n", times);
   while(times>=0 && front!=NULL){ //might return null if in library and looking thru empty letter
@@ -123,7 +124,7 @@ struct song_node * randomSong(struct song_node *front){
   return front; //changes where 'front' points to but doesn't affect anything outside this method
 }
 //
-struct song_node * addOrdered(struct song_node *front, char *name, char *artist){
+struct song_node * add_ordered(struct song_node *front, char *name, char *artist){
   if (front == NULL){
     front = insert_front(front, name, artist);
     return front;

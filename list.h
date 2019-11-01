@@ -26,14 +26,14 @@ struct song_node * free_list(struct song_node *pointer);
 
 struct song_node * listRemove(struct song_node *front, char *name, char *artist);
 
-struct song_node * addOrdered(struct song_node *front, char *name, char *artist);
+struct song_node * add_ordered(struct song_node *front, char *name, char *artist);
 //will return pointer to front, uses strcmp to place this node. NOTE: please use only lowercase
 
 struct song_node * find(struct song_node *front, char *name, char *artist);
 
-struct song_node * findArtist(struct song_node *front, char *artist);
+struct song_node * find_artist(struct song_node *front, char *artist);
 
-struct song_node * randomSong(struct song_node *front);
+struct song_node * random_song(struct song_node *front);
 
-void printNode(struct song_node *pointer);
+void print_node(struct song_node *pointer);
 #endif
