@@ -97,6 +97,7 @@ int main(){
     table[i] = NULL;
   }
   printf("\n\n------TESTING LIBRARY------\n\n");
+  printf("where table points to: %p\n", table);
   printf("adding songs\n");
   /*
   for (i=97; i<123; i++){
@@ -174,6 +175,11 @@ int main(){
   printf("lastly, deleting rolling stones: wild horses\n");
   deleteSong(table, "wild horses", "rolling stones");
   printLetter(table, 'r');
+  printf("now going to clear entire list (should print empty list)\n");
+  clearLib(table);
+  printf("where table points to now: %p\n", table);
+  printLib(table);
+  printf("\n--THANK YOU!--\n");
   //
   return 0;
 }

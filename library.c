@@ -40,6 +40,7 @@ void printArtist(struct song_node **table, char *artist){
 void printLib(struct song_node **table){
   int i;
   for (i = 0; i<27; i++){ //like letters
+    printf("printing out table[%d], points to %p, which has value: \n", i, table[i]);
     print_list(table[i]);
   }
 }
@@ -62,13 +63,18 @@ struct song_node * findArtistLib(struct song_node **table, char *artist){
 void deleteSong(struct song_node **table, char*name, char*artist){
   int index = makeIndex(artist[0]);
   table[index] = listRemove(table[index], name, artist);
+  //return table;
 }
 //
 void clearLib(struct song_node **table){
   int i;
   for (i=0; i<27; i++){
-    free_list(table[i]);
+      printf("going to free table[%d]\n", i);
+      printf("pointer of table[%d]: %p\n", i, table[i]);
+      free_list(table[i]);
+      printf("freed table[%d]\n", i);
   }
+  table = NULL;
 }
 //
 void shuffle(struct song_node **table){

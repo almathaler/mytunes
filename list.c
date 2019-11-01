@@ -32,19 +32,22 @@ void print_list(struct song_node *pointer){
 }
 //freeing list
 struct song_node * free_list(struct song_node *pointer){
-  if (pointer->next == NULL){
-    //printf("freeing base: ");
-    //printNode(pointer);
-    free(pointer); //empty this space
-    pointer = NULL;
-  }else{
-    //printf("not yet at bottom, am here: ");
-    //printNode(pointer);
-    free_list(pointer->next); //go to the next node to free it
-    //printf("freeing: ");
-    //printNode(pointer);
-    free(pointer);
-    pointer = NULL;
+    if(pointer == NULL){
+      return pointer;
+    }
+    if (pointer->next == NULL){
+      //printf("freeing base: ");
+      //printNode(pointer);
+      free(pointer); //empty this space
+      pointer = NULL;
+    }else{
+      //printf("not yet at bottom, am here: ");
+      //printNode(pointer);
+      free_list(pointer->next); //go to the next node to free it
+      //printf("freeing: ");
+      //printNode(pointer);
+      free(pointer);
+      pointer = NULL;
   }
   return pointer;
 }
@@ -75,6 +78,7 @@ struct song_node * listRemove(struct song_node *front, char *name, char *artist)
       iterator = iterator->next;
     }
   }
+  //what happens if you try to remove something that isn't there?
   return front;
 }
 //
